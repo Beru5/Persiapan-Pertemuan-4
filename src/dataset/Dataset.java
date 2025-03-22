@@ -28,13 +28,16 @@ public class Dataset {
                               
             String[] values = line.split(",(?=(?:[^\\\"]*\\\"[^\\\"]*\\\")*[^\\\"]*$)");
             
+            String invoice = values[0].trim();
             String kodeStok = values[1].trim();
             String deskripsi = values[2].trim();
             int kuantitas = Integer.parseInt(values[3].trim());
+            String tanggal = values[4].trim();
             double hargaSatuan = Double.parseDouble(values[5].trim());
+            String idPelanggan = values[6].trim();
             String negara = values[7].trim();
 
-            Produk produk = new Produk(kodeStok, deskripsi, hargaSatuan, kuantitas, negara);
+            Produk produk = new Produk(invoice, kodeStok, deskripsi, tanggal, hargaSatuan, kuantitas, idPelanggan, negara);
             listProduk.add(produk);
             negaraMana.add(negara);
                 
@@ -55,7 +58,7 @@ public class Dataset {
             //batasi hingga 5 saja, karena 541909 data produk bakal kewalahan untuk scroll ke bagian sebelumnya
             totalPenjualanProduk.entrySet().stream().limit(5).forEach(e -> System.out.println("Kode Stok: " + e.getKey() + " -> " + e.getValue() + " pcs"));            
             //jika ingin tidak dibatasi, gunakan kode berikut alih-alih kode diatas
-            // totalPenjualanProduk.forEach((k, v) -> System.out.println("Kode Stok: " + k + " -> " + v + " pcs"));
+            //totalPenjualanProduk.forEach((k, v) -> System.out.println("Kode Stok: " + k + " -> " + v + " pcs"));
             
             System.out.println("\n=== Total Pendapatan per Negara ===");
             penghasilanPerNegara.forEach((negara, duit) -> System.out.println("Negara: " + negara + " -> $" + duit));
