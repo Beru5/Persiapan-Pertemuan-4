@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Produk {  
-    String invoice;
+    String invoiceNo;
     String kodeStok;
     String deskripsi;   
     LocalDateTime tanggal;
@@ -15,8 +15,8 @@ public class Produk {
 
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    public Produk(String invoice, String kodeStok, String deskripsi, String tanggal, double hargaSatuan, int kuantitas, String idPelanggan, String negara) {
-        this.invoice = invoice;
+    public Produk(String invoiceNo, String kodeStok, String deskripsi, String tanggal, double hargaSatuan, int kuantitas, String idPelanggan, String negara) {
+        this.invoiceNo = invoiceNo;
         this.kodeStok = kodeStok;
         this.deskripsi = deskripsi;
         this.tanggal = LocalDateTime.parse(tanggal, FORMATTER);
@@ -33,7 +33,7 @@ public class Produk {
 
     @Override
     public String toString() {
-        return invoice + " - " + kodeStok + " - " + deskripsi + " - " + tanggal + " - " + kuantitas + " pcs - $" + hargaSatuan + " - " + idPelanggan + " - "+ negara;
+        return invoiceNo + " - " + kodeStok + " - " + deskripsi + " - " + tanggal + " - " + kuantitas + " pcs - $" + hargaSatuan + " - " + idPelanggan + " - "+ negara;
     }
 }
 
